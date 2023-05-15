@@ -42,5 +42,5 @@ Run it with this command: ```python audiogui.py```
 
 <img src=".\images\Screenshot%202023-05-07%20041202.png" alt="screenshot-1" width="200"/>
 <img src=".\images\Screenshot%202023-05-08%20004529.png" alt="screenshot-2" width="200"/>
-<img src=".\images\Screenshot%202023-05-09%20022539.png" alt="screenshot-3"/>
-<img src="images/Screenshot%202023-05-14%20142317.png" alt="screenshot-4">
+<img src=".\images\Screenshot%202023-05-09%20022539.png" alt="screenshot-3" width="200"/>
+<img src="images/Screenshot%202023-05-14%20142317.png" alt="screenshot-4" width="200">
