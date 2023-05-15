@@ -1,6 +1,7 @@
 # AudioGUI
 
-This app renders two layers of files in a table. It was originally built to quickly show the contents of an AudioBook library
+This app renders two layers of files in a table, and allows you to see which files are in both folders, and one way file copying.
+It was originally built to quickly show the contents of an AudioBook library
 
 Run it with this command: ```python audiogui.py```
 
