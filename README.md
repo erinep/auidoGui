@@ -14,7 +14,7 @@ Run it with this command: ```python audiogui.py```
 
 ## Bugs
 
-- Copying books with bar audio files (not in file structure show below) crashes the app
+- Copying books with bare audio files (not in file structure show below) crashes the app
 
 
 ## Intended Audio File Structure
