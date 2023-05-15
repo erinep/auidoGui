@@ -6,9 +6,9 @@ Run it with this command: ```python audiogui.py```
 
 ## TODO
 
-- File Renaming
-- File copying
 - Threads for File Copying
+- File copying status bar
+- Integrate with ADB-Shell for android file transfer
 - StyleSheet
 - create binary
 
@@ -45,4 +45,4 @@ Run it with this command: ```python audiogui.py```
 
 ```
 
-<img src="images/Screenshot%202023-05-14%20213739.png" alt="screen shot of app" width="400">
+<img src="images/Screenshot%202023-05-14%20213739.png" alt="screen shot of app">
