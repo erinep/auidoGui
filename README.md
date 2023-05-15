@@ -1,6 +1,6 @@
 # AudioGUI
 
-This app renders two layers of files in a table, and allows you to see which files are in both folders, and one way file copying.
+This app lets you manage an audiobook library with a graphical user interface. It shows you which files are in the library, and allows one way file copying to create a library backup.
 It was originally built to quickly show the contents of an AudioBook library
 
 Run it with this command: ```python audiogui.py```
@@ -40,8 +40,3 @@ Run it with this command: ```python audiogui.py```
 ├── ...
 
 ```
-
-<img src=".\images\Screenshot%202023-05-07%20041202.png" alt="screenshot-1" width="200"/>
-<img src=".\images\Screenshot%202023-05-08%20004529.png" alt="screenshot-2" width="200"/>
-<img src=".\images\Screenshot%202023-05-09%20022539.png" alt="screenshot-3" width="200"/>
-<img src="images/Screenshot%202023-05-14%20142317.png" alt="screenshot-4" width="200">
