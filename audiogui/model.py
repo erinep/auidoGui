@@ -10,8 +10,9 @@ Status = Enum( 'Status', ['both', 'sourceonly'])
 
 class Model():
 
-    defaultSrc = '/Users/Erin/Documents/2023/Python/TestSrc'
-    defaultDest = '/Users/Erin/Documents/2023/Python/TestDest'
+    defaultSrc = './media/sampleSrc'
+    defaultDest = './media/sampleDst'
+
 
     def __init__(self, src=defaultSrc, dest=defaultDest):
         self.srcBooks = []
