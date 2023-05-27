@@ -9,6 +9,7 @@ from PyQt6.QtGui import QIcon
 from PyQt6.QtWidgets import (
     QMainWindow,
     QVBoxLayout,
+    QHBoxLayout,
     QGridLayout,
     QLabel,
     QWidget,
@@ -16,6 +17,7 @@ from PyQt6.QtWidgets import (
     QFileDialog,
     QPushButton,
     QListWidget,
+    QProgressBar,
 )
 
 HEIGHT = 400
@@ -29,6 +31,7 @@ class Window(QMainWindow):
         self._createDestSelector()
         self._createBooksTable()
         self._createUploadControl()
+
         self.setMinimumHeight(HEIGHT)
         self.setMinimumWidth(WIDTH)
 
@@ -62,7 +65,6 @@ class Window(QMainWindow):
         layout = QGridLayout()
         uploadPanel.setLayout(layout)
 
-
         self.toUpload = QListWidget()
         self.uploadButton = QPushButton("Upload")
         self.clearButton = QPushButton("Deselect")
@@ -74,6 +76,25 @@ class Window(QMainWindow):
 
         self._rootLayout.addWidget(uploadPanel)
 
+    def createProgressBar(self, max=100):
+
+        min = 0
+        if (not hasattr(self, 'progressbar')):
+            # Create Base Element/Layout
+            element = QWidget()
+            layout = QHBoxLayout(element)
+            self.progressbar = QProgressBar()
+            layout.addWidget(self.progressbar)
+            self.pLabel = QLabel(f'{min}/{max}')
+            layout.addWidget(self.pLabel)
+            self._rootLayout.addWidget(element)
+
+        self.progressbar.setRange(min, max)
+        self.progressbar.setValue(0)
+
+    def updateProgressBar(self, value, text):
+        self.progressbar.setValue(value)
+        self.pLabel.setText(text)
 
     def setSrcLine(self, text):
         """ Sets text in in the Source Line Edit"""

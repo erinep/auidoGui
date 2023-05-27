@@ -6,6 +6,7 @@
 import sys
 from distutils.dir_util import copy_tree
 from functools import partial
+from multiprocessing import Process
 from PyQt6.QtWidgets import QApplication
 from .view import Window
 from .model import Model, Status
@@ -47,11 +48,24 @@ class Controller():
         """ Copy selected items to destination Path"""
         srcBase = str(self._m.srcPath)
         dstBase = str(self._m.dstPath)
-        for book in self._m.selected:
-            sUrl = str(self._m.srcPath.joinpath(book['author']).joinpath(book['title']))
-            dUrl = str(self._m.dstPath.joinpath(book['author']).joinpath(book['title']))
-            #print(sUrl, " to ", dUrl)
-            copy_tree(sUrl, dUrl)
+        
+        length =  len(self._m.selected)
+        if (length != 0):
+            self._v.createProgressBar(length)
+            for n, book in enumerate(self._m.selected):
+                sUrl = str(self._m.srcPath.joinpath(book['author']).joinpath(book['title']))
+                dUrl = str(self._m.dstPath.joinpath(book['author']).joinpath(book['title']))
+                print(sUrl, " to ", dUrl)
+                copy_tree(sUrl, dUrl)
+                self._v.updateProgressBar(n, f"{n}/{length}")
+            # After Loop, update progress bar values
+            self._v.updateProgressBar(length, f"{length}/{length}")
+            #set timeout to remove proces
+            Process()
+        else:
+            self._v.setStatusMessage('nothing selected...', 2000)
+       
+        
 
     def _updateDir(self, isDest=False):
         """ select active directory, and reload the window"""
