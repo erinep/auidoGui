@@ -7,6 +7,7 @@ from pathlib import Path
 from enum import Enum
 
 Status = Enum( 'Status', ['both', 'sourceonly'])
+ErrorCodes = Enum('Error', ['permission_error', 'file_not_found'])
 
 class Model():
 
@@ -58,8 +59,11 @@ class Model():
                             "status": Status.sourceonly}
                         booksCollection.append(newBook)
         except PermissionError:
-            return 1
             print("Permission Error: Please select a different folder")
+            return ErrorCodes.permission_error
+        except FileNotFoundError:
+            print("File Not Found Error: Please select a different folder")
+            return ErrorCodes.file_not_found
 
     def getPathStr(self, dest=0):
         """ return string value of current path"""

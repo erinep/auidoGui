@@ -6,10 +6,9 @@
 import sys
 from distutils.dir_util import copy_tree
 from functools import partial
-from multiprocessing import Process
 from PyQt6.QtWidgets import QApplication
 from .view import Window
-from .model import Model, Status
+from .model import Model, Status, ErrorCodes
 
 def main():
     app = QApplication(sys.argv)
@@ -36,8 +35,11 @@ class Controller():
             self._v.setStatusMessage("Permission Error: could not access all files at Source", 3000)
         
         #load dest book
-        if (self._m.getBooks(self._m.dstPath, self._m.dstBooks)):
+        status_code = self._m.getBooks(self._m.dstPath, self._m.dstBooks)
+        if ( status_code == ErrorCodes.permission_error):
             self._v.setStatusMessage("Permission Error: could not access all files at Destination", 3000)
+        if ( status_code == ErrorCodes.file_not_found):
+            self._v.setStatusMessage("File Not Found Error: could not access all files at Destination", 3000)
 
         self._m.compareBooks()
         self._v.showBooks(self._m.srcBooks)
@@ -60,8 +62,8 @@ class Controller():
                 self._v.updateProgressBar(n, f"{n}/{length}")
             # After Loop, update progress bar values
             self._v.updateProgressBar(length, f"{length}/{length}")
-            #set timeout to remove proces
-            Process()
+            #TODO remove statusbar 5 seconds after transfer is completed
+            
         else:
             self._v.setStatusMessage('nothing selected...', 2000)
        

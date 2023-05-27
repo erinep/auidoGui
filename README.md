@@ -2,7 +2,21 @@
 
 This app lets you manage an audiobook library with a graphical user interface. It shows you which files are in the library, and allows one way file copying to create a library backup.
 
-Run it with this command: ```python audiogui.py```
+Launch the app with these commands:
+
+```
+# create python environment
+python -m venv audioguiEnv
+
+# active the environmnent
+.\audioguiEnv\Scripts\activate
+
+# install dependencies
+pip install -r requirements.txt
+
+# To launch the app, call the entry script:
+python audiogui.py
+```
 
 ## TODO
 

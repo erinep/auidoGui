@@ -124,6 +124,8 @@ class Window(QMainWindow):
 
     def selectDir(self, prompt, path):
         """ Open file selection dialog and return selected folder"""
-        dirName = QFileDialog().getExistingDirectory(self,
-        caption=prompt, directory=str(path))
+        dirName = QFileDialog().getExistingDirectory(
+            self,
+            caption=prompt,
+            directory=str(path))
         return dirName
