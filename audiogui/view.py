@@ -4,6 +4,7 @@
 """This module provides the audiogui main window."""
 
 from .customWidgets import BooksTable, FileSelector
+from time import sleep
 from PyQt6.QtCore import Qt
 from PyQt6.QtGui import QIcon
 from PyQt6.QtWidgets import (
@@ -79,15 +80,15 @@ class Window(QMainWindow):
     def createProgressBar(self, max=100):
 
         min = 0
-        if (not hasattr(self, 'progressbar')):
+        if (not hasattr(self, 'progressbarContainer')):
             # Create Base Element/Layout
-            element = QWidget()
-            layout = QHBoxLayout(element)
+            self.progressbarContainer = QWidget()
+            layout = QHBoxLayout(self.progressbarContainer)
             self.progressbar = QProgressBar()
             layout.addWidget(self.progressbar)
             self.pLabel = QLabel(f'{min}/{max}')
             layout.addWidget(self.pLabel)
-            self._rootLayout.addWidget(element)
+            self._rootLayout.addWidget(self.progressbarContainer)
 
         self.progressbar.setRange(min, max)
         self.progressbar.setValue(0)
@@ -129,3 +130,13 @@ class Window(QMainWindow):
             caption=prompt,
             directory=str(path))
         return dirName
+
+    def killProgressBar(self, s):
+        """delete progressBar container after s seconds"""
+        print(f'progress bar will be closed in {s} seconds')
+        sleep(s)
+        if(self.progressbarContainer.close()):
+            print('success')
+        else:
+            print('fail')
+        

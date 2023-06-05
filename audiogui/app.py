@@ -4,7 +4,7 @@
 """This module provides the audiogui application."""
 
 import sys
-from distutils.dir_util import copy_tree
+from .utils import copy
 from functools import partial
 from PyQt6.QtWidgets import QApplication
 from .view import Window
@@ -48,25 +48,18 @@ class Controller():
 
     def copy(self):
         """ Copy selected items to destination Path"""
-        srcBase = str(self._m.srcPath)
-        dstBase = str(self._m.dstPath)
-        
         length =  len(self._m.selected)
         if (length != 0):
             self._v.createProgressBar(length)
             for n, book in enumerate(self._m.selected):
-                sUrl = str(self._m.srcPath.joinpath(book['author']).joinpath(book['title']))
-                dUrl = str(self._m.dstPath.joinpath(book['author']).joinpath(book['title']))
-                print(sUrl, " to ", dUrl)
-                copy_tree(sUrl, dUrl)
+                # copy(self._m.srcPath, self._m.dstPath, book)
                 self._v.updateProgressBar(n, f"{n}/{length}")
             # After Loop, update progress bar values
-            self._v.updateProgressBar(length, f"{length}/{length}")
             #TODO remove statusbar 5 seconds after transfer is completed
-            
+            self._v.updateProgressBar(length, f"{length}/{length}")
+            self._v.killProgressBar(2)
         else:
             self._v.setStatusMessage('nothing selected...', 2000)
-       
         
 
     def _updateDir(self, isDest=False):
