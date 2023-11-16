@@ -18,19 +18,6 @@ pip install -r requirements.txt
 python audiogui.py
 ```
 
-## TODO
-
-- Threads for File Copying
-- File copying status bar
-- Integrate with ADB-Shell for android file transfer
-- StyleSheet
-- create binary
-
-## Bugs
-
-- Copying books with bare audio files (not in file structure show below) crashes the app
-
-
 ## Intended Audio File Structure
 
 ```text
